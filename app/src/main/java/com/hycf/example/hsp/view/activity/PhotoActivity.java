@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bm.library.PhotoView;
 import com.bumptech.glide.Glide;
@@ -72,6 +73,7 @@ public class PhotoActivity extends AppCompatActivity implements View.OnLongClick
      */
     @Override
     public boolean onLongClick(View view) {
+        Toast.makeText(this, "长按拉!", Toast.LENGTH_SHORT).show();
         return false;
     }
 }
