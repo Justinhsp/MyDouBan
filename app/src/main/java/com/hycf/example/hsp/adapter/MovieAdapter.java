@@ -3,6 +3,7 @@ package com.hycf.example.hsp.adapter;
 import android.content.Context;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,33 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
             holder.llItem.setBackgroundColor(context.getResources().getColor(R.color.colorWhite));
             holder.tvMovieTitle.setTextColor(context.getResources().getColor(R.color.colorMovieText1));
         }
+        //控制checkBox显示与影藏
+        if (isCheck){
+            holder.checkbox.setVisibility(View.VISIBLE);
+            //判断是否选择
+            if (selectPositions.contains(position)){
+                holder.checkbox.setChecked(true);
+            }else {
+                holder.checkbox.setChecked(false);
+            }
+            holder.checkbox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (selectPositions.contains(holder.getAdapterPosition())){
+                        //存在集合中 移除
+                        selectPositions.remove((Integer) holder.getAdapterPosition());
+                        holder.checkbox.setChecked(false);
+                    }else {
+                        //不存在添加
+                        selectPositions.add(holder.getAdapterPosition());
+                        holder.checkbox.setChecked(true);
+                    }
+                }
+            });
+        }else {
+            holder.checkbox.setVisibility(View.GONE);
+        }
+
         //加载图片
         Glide.with(context).load(subjectsBean.getImages().getMedium()).into(holder.imgMovie);
         //设置title
@@ -99,15 +127,62 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mOnItemClickListener.onItemClick(holder.getAdapterPosition(), subjectsBean.getMovie_id(), subjectsBean.getImages().getLarge(), subjectsBean.getTitle());
+                Log.d(TAG, "onClick: "+isCheck);
+                if (!isCheck) {
+                    mOnItemClickListener.onItemClick(holder.getAdapterPosition(), subjectsBean.getMovie_id(), subjectsBean.getImages().getLarge(), subjectsBean.getTitle());
+                }else {
+                    if (selectPositions.contains(holder.getAdapterPosition())){
+                        //存在集合-移除
+                        selectPositions.remove((Integer) holder.getAdapterPosition());
+                        holder.checkbox.setChecked(false);
+                    }else {
+                        //不存在集合-添加
+                        selectPositions.add(holder.getAdapterPosition());
+                        holder.checkbox.setChecked(true);
+                    }
+                }
             }
         });
     }
+
+    /**
+     * 设置选择状态
+     * @param isCheck
+     */
+    public  void setCheck(boolean isCheck){
+        this.isCheck=isCheck;
+        selectPositions.clear();
+    }
+
+    /**
+     * 返回被选择的Id
+     * @return
+     */
+    public ArrayList<String> getSelectIds(){
+        ArrayList<String> selectIds=new ArrayList<>();
+        for (Integer i:selectPositions){
+            selectIds.add(movieModel.get(i).getMovie_id());
+        }
+        return selectIds;
+    }
+
+    /**
+     * 返回被选择的position
+     */
+    public ArrayList<MovieSubjectsModel> getSelectModels() {
+        ArrayList<MovieSubjectsModel> selectModels = new ArrayList<>();
+        for (Integer i : selectPositions) {
+            selectModels.add(movieModel.get(i));
+        }
+        return selectModels;
+    }
+
 
     @Override
     public int getItemCount() {
         return movieModel.size();
     }
+
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.checkbox)

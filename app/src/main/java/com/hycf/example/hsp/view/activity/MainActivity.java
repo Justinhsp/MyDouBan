@@ -184,9 +184,9 @@ public class MainActivity extends AppCompatActivity implements IOnSearchClickLis
      */
     @Override
     public void OnSearchClick(String keyword) {
-        //intent.setClass(this, SearchDetailActivity.class);
-        //intent.putExtra("keyword", keyword);
-        //startActivity(intent);
+        intent.setClass(this, SearchDetailActivity.class);
+        intent.putExtra("keyword", keyword);
+        startActivity(intent);
     }
 
     /**
@@ -222,12 +222,12 @@ public class MainActivity extends AppCompatActivity implements IOnSearchClickLis
                 System.exit(0);
                 break;
             case R.id.nav_favorite://收藏
-                //intent.setClass(this, FavoriteActivity.class);
-                //startActivity(intent);
+                intent.setClass(this, FavoriteActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_gift://福利
-                //intent.setClass(this, GiftActivity.class);
-                //startActivity(intent);
+                intent.setClass(this, GiftActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_sun_mode://日间模式
                 setDayNightMode(false);

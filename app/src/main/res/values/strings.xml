@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">DouBanMovie</string>
     <string name="my_name">MaterialHsp</string>
-    <string name="my_github">https://github.com/Justinhsp</string>
+    <string name="my_github">https://github.com/Justinhsp/MyDouBan</string>
     <string name="movie">电影</string>
     <string name="anime">动画</string>
     <string name="tv">电视剧</string>

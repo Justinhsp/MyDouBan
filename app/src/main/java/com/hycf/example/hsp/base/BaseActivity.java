@@ -30,7 +30,7 @@ public abstract class BaseActivity<V,T extends BasePresenter<V>> extends SwipeBa
         initView();
         //夜间模式颜色
         if (MyApplication.NIGHT_MODE) {
-           // findViewById(R.id.root_view).setBackgroundColor(getResources().getColor(R.color.colorNightBg));
+            findViewById(R.id.root_view).setBackgroundColor(getResources().getColor(R.color.colorNightBg));
         }
     }
 

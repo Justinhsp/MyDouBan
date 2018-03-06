@@ -30,16 +30,27 @@ public class MoviePresenter extends BasePresenter<IMovieView> implements IMovieP
 
 
     private Observer<MovieModel> observer=new Observer<MovieModel>() {
+        /**
+         * 请求数据完成
+         */
         @Override
         public void onCompleted() {
         }
 
+        /**
+         * 请求数据完成
+         * @param e
+         */
         @Override
         public void onError(Throwable e) {
             Log.e(TAG, "onError: ",e);
             mView.showError();
         }
 
+        /**
+         * RxJava 的事件回调方法普通事件onNext()
+         * @param movieModel
+         */
         @Override
         public void onNext(MovieModel movieModel) {
                if (movieModel.getSubjects().size()>0){
@@ -61,8 +72,8 @@ public class MoviePresenter extends BasePresenter<IMovieView> implements IMovieP
         }
         subscription = NetWork.getDouBanApi()
                 .searchTag(artist, start, 15)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())               //指定 subscribe() 发生在 IO 线程
+                .observeOn(AndroidSchedulers.mainThread()) // 指定 Subscriber 的回调发生在主线程
                 .subscribe(observer);
     }
 

@@ -325,7 +325,12 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailView, MovieDet
      */
     @Override
     public void onItemClick(String id, String name) {
-
+        Intent intent = new Intent(this, CelebrityDetailActivity.class);
+        intent.putExtra("id", id);
+        intent.putExtra("theme", getIntent().getIntExtra("theme", R.style.MovieThemeTransNav));
+        intent.putExtra("title", name);
+        intent.putExtra("color", getIntent().getIntExtra("color", getResources().getColor(R.color.colorMovie)));
+        startActivity(intent);
     }
 
 

@@ -17,12 +17,15 @@
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.MovieDetailActivity" />
-        <activity android:name=".view.activity.PhotoActivity"></activity>
+        <activity android:name=".view.activity.PhotoActivity"/>
+        <activity android:name=".view.activity.CelebrityDetailActivity"/>
+        <activity android:name=".view.activity.SearchDetailActivity"/>
+        <activity android:name=".view.activity.GiftActivity"/>
+        <activity android:name=".view.activity.FavoriteActivity"/>
     </application>
 
 </manifest>
