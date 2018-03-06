@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00BBD3</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorNight">#202020</color>
+    <color name="colorNightBg">#303030</color>
+    <color name="colorMovie">#009688</color>
+    <color name="colorAnime">#F7BACF</color>
+    <color name="colorTV">#FE9700</color>
+    <color name="colorTop250">#00BBD3</color>
+    <color name="colorTag">#785447</color>
+    <color name="colorTagLight1">#bb9e94</color>
+    <color name="colorTagLight2">#795548</color>
+    <color name="colorDark">#363F45</color>
+    <color name="colorCcc">#cccccc</color>
+    <color name="color999">#999999</color>
+    <color name="colorMovieText1">#212121</color>
+    <color name="colorMovieText2">#BDBDBD</color>
+    <color name="colorCelebrityText1">#4C4C4C</color>
+</resources>

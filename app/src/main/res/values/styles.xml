@@ -1,0 +1,78 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent
+        </item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
+        <!-- 使用自定义样式-->
+        <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
+        <!-- Dialog使用自定义样式-->
+        <item name="alertDialogTheme">@style/AlertDialog</item>
+    </style>
+
+    <!--自定义 navigation drarwer 的样式-->
+    <style name="AppTheme.MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/colorWhite</item>
+    </style>
+
+    <!-- Dialog使用自定义样式-->
+    <style name="AlertDialog" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/colorMovieText1</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+
+    <!--Toolbar的高度-->
+    <style name="ToolbarHeight">
+        <item name="android:layout_height">?attr/actionBarSize</item>
+    </style>
+
+
+    <style name="NightThemeTransNav" parent="BaseTheme">
+        <item name="colorPrimary">@color/colorNight</item>
+        <item name="colorPrimaryDark">@color/colorNight</item>
+        <item name="colorAccent">@color/colorNight</item>
+    </style>
+
+    <style name="MovieThemeTransNav" parent="BaseTheme">
+        <item name="colorPrimary">@color/colorMovie</item>
+        <item name="colorPrimaryDark">@color/colorMovie</item>
+        <item name="colorAccent">@color/colorMovie</item>
+    </style>
+
+    <style name="AnimeThemeTransNav" parent="BaseTheme">
+        <item name="colorPrimary">@color/colorAnime</item>
+        <item name="colorPrimaryDark">@color/colorAnime</item>
+        <item name="colorAccent">@color/colorAnime</item>
+    </style>
+
+    <style name="TVThemeTransNav" parent="BaseTheme">
+        <item name="colorPrimary">@color/colorTV</item>
+        <item name="colorPrimaryDark">@color/colorTV</item>
+        <item name="colorAccent">@color/colorTV</item>
+    </style>
+
+    <style name="Top250ThemeTransNav" parent="BaseTheme">
+        <item name="colorPrimary">@color/colorTop250</item>
+        <item name="colorPrimaryDark">@color/colorTop250</item>
+        <item name="colorAccent">@color/colorTop250</item>
+    </style>
+
+    <style name="TagThemeTransNav" parent="BaseTheme">
+        <item name="colorPrimary">@color/colorTag</item>
+        <item name="colorPrimaryDark">@color/colorTag</item>
+        <item name="colorAccent">@color/colorTag</item>
+    </style>
+
+
+</resources>
