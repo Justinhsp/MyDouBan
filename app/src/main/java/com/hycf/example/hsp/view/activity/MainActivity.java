@@ -22,7 +22,11 @@ import com.hycf.example.hsp.R;
 import com.hycf.example.hsp.adapter.FragmentAdapter;
 import com.hycf.example.hsp.assistview.NoScrollViewPager;
 import com.hycf.example.hsp.msg.MessageEvent;
+import com.hycf.example.hsp.view.fragment.AnimeFragment;
 import com.hycf.example.hsp.view.fragment.MovieFragment;
+import com.hycf.example.hsp.view.fragment.TVFragment;
+import com.hycf.example.hsp.view.fragment.TagFragment;
+import com.hycf.example.hsp.view.fragment.Top250Fragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements IOnSearchClickLis
 
     //Fragment适配器
     private FragmentAdapter fragmentAdapter;
-    private List<Fragment> fragments=new ArrayList<>();
+    private List<Fragment> fragments = new ArrayList<>();
     //Github
     private TextView my_github;
     //导航头像
@@ -87,9 +91,12 @@ public class MainActivity extends AppCompatActivity implements IOnSearchClickLis
         my_github = (TextView) headerLayout.findViewById(R.id.my_github);
         user_icon = (CircleImageView) headerLayout.findViewById(R.id.user_icon);
         //初始化Adapter
-         fragments.add(new MovieFragment());
-
-        fragmentAdapter=new FragmentAdapter(getSupportFragmentManager(),fragments);
+        fragments.add(new MovieFragment());
+        fragments.add(new AnimeFragment());
+        fragments.add(new TVFragment());
+        fragments.add(new Top250Fragment());
+        fragments.add(new TagFragment());
+        fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
         //viewpager配置
         viewpager.setNoScroll(true);//viewpager禁止滑动
         viewpager.setOffscreenPageLimit(5);//默认加载5页
@@ -126,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements IOnSearchClickLis
 
     /**
      * 底部导航点击回调
+     *
      * @param tabId
      */
     @Override
@@ -180,6 +188,7 @@ public class MainActivity extends AppCompatActivity implements IOnSearchClickLis
 
     /**
      * 搜索回调
+     *
      * @param keyword
      */
     @Override
@@ -191,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements IOnSearchClickLis
 
     /**
      * 导航Icon点击回调
+     *
      * @param view
      */
     @Override
@@ -200,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements IOnSearchClickLis
 
     /**
      * toolbar子菜单点击回调
+     *
      * @param item
      * @return
      */
@@ -211,6 +222,7 @@ public class MainActivity extends AppCompatActivity implements IOnSearchClickLis
 
     /**
      * 右侧抽屉子菜单点击回调
+     *
      * @param item
      * @return
      */

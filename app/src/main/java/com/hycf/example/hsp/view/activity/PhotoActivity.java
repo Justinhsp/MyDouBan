@@ -1,10 +1,20 @@
 package com.hycf.example.hsp.view.activity;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,6 +24,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.hycf.example.hsp.R;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,6 +69,7 @@ public class PhotoActivity extends AppCompatActivity implements View.OnLongClick
 
     /**
      * 点击退出
+     *
      * @param view
      */
     @OnClick({R.id.photoview})
@@ -68,12 +83,102 @@ public class PhotoActivity extends AppCompatActivity implements View.OnLongClick
 
     /**
      * 长按保存图片到手机根目录
+     *
      * @param view
      * @return
      */
     @Override
     public boolean onLongClick(View view) {
-        Toast.makeText(this, "长按拉!", Toast.LENGTH_SHORT).show();
+        final Dialog saveDialog = new AlertDialog.Builder(this).create();
+        View saveView = LayoutInflater.from(this).inflate(R.layout.dialog_save, null);
+        saveView.findViewById(R.id.tv_save).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fileName = filePath + System.currentTimeMillis() + ".jpg";
+                //版本判断 当手机系统大于23时 才有必要去判断权限是否获取
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    //检查权限是否获取
+                    int i = ContextCompat.checkSelfPermission(PhotoActivity.this, permissions[0]);
+                    //权限是否已经授权  GRANTED---授权 DINIED----拒绝
+                    if (i != PackageManager.PERMISSION_GRANTED) {
+                        //如果没有权限,就去请求权限
+                        showDialogTipUserRequestPermission();
+                    } else {
+                        if (savePicture()) {
+                            Toast.makeText(PhotoActivity.this, String.format(getString(R.string.save_success), fileName), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                } else {
+                    if (savePicture()) {
+                        Toast.makeText(PhotoActivity.this, String.format(getString(R.string.save_success), fileName), Toast.LENGTH_SHORT).show();
+                    }
+                }
+                saveDialog.dismiss();
+            }
+        });
+        saveDialog.show();
+        saveDialog.setContentView(saveView);
         return false;
+    }
+
+
+    /**
+     * 保存图片到根目录
+     *
+     * @return
+     */
+    private boolean savePicture() {
+        boolean isSave;
+        try {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+
+            FileOutputStream out = new FileOutputStream(fileName);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush();
+            out.close();
+            isSave = true;
+            //发送一个系统广播通知手机有图片更新
+            sendBroadcastToAlbum();
+        } catch (IOException e) {
+            e.printStackTrace();
+            isSave=false;
+        }
+        return isSave;
+    }
+
+    /**
+     * 发送一个系统广播通知手机有图片更新
+     */
+    private void sendBroadcastToAlbum() {
+        Intent intent=new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        Uri uri=Uri.fromFile(new File(fileName));
+        intent.setData(uri);
+        sendBroadcast(intent);
+    }
+
+
+    /**
+     * 提示用户请求权限的弹出框
+     */
+    private void showDialogTipUserRequestPermission() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.permissions_tips_title))
+                .setMessage(getString(R.string.permissions_tips_content))
+                .setPositiveButton(getString(R.string.open), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 开始提交请求权限
+                        ActivityCompat.requestPermissions(PhotoActivity.this, permissions, 321);
+                    }
+                })
+                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).setCancelable(false).show();
     }
 }

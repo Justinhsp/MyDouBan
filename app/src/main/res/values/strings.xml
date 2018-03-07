@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DouBanMovie</string>
+    <string name="app_name">MarterialDouBan</string>
     <string name="my_name">MaterialHsp</string>
     <string name="my_github">https://github.com/Justinhsp/MyDouBan</string>
     <string name="movie">电影</string>
@@ -18,10 +18,10 @@
     <string name="collection">收藏</string>
     <string name="exit">退出</string>
     <string name="search_title">搜索：%s</string>
-    <string name="tag_type">类型 · · · · · ·</string>
-    <string name="tag_country">国家/地区 · · · · · ·</string>
-    <string name="tag_artist">艺术家 · · · · · ·</string>
-    <string name="tag_year">年代 · · · · · ·</string>
+    <string name="tag_type">类型</string>
+    <string name="tag_country">国家/地区</string>
+    <string name="tag_artist">艺术家</string>
+    <string name="tag_year">年代</string>
     <string name="error_tips">网络出错，请重试</string>
     <string name="error_tips2">网络出错，点我重新加载</string>
     <string name="error_tips3">查找不到此条目</string>
