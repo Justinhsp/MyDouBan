@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context="com.hycf.example.hsp.view.activity.MainActivity">
+    tools:context="com.hycf.example.douban.view.activity.MainActivity">
     <!-- CoordinatorLayout是在 Google IO/15 大会发布的，
     遵循Material 风格，包含在 support Library中，结合AppbarLayout,
      CollapsingToolbarLayout等 可 产生各种炫酷的效果
@@ -26,7 +26,7 @@
           </android.support.design.widget.AppBarLayout>
 
            <!--禁止ViewPager左右滑动 NoScrollViewPager-->
-             <com.hycf.example.hsp.assistview.NoScrollViewPager
+             <com.hycf.example.douban.assistview.NoScrollViewPager
                  android:id="@+id/viewpager"
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"

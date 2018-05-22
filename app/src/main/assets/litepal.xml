@@ -3,19 +3,19 @@
     <dbname value="movie_db" />
     <version value="1" />
     <list>
-        <mapping class="com.hycf.example.hsp.model.MovieSubjectsModel" />
-        <mapping class="com.hycf.example.hsp.model.MovieSubjectsModel$RatingBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieSubjectsModel$ImagesBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieSubjectsModel$CastsBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieSubjectsModel$CastsBean$AvatarsBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieSubjectsModel$DirectorsBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieSubjectsModel$DirectorsBean$AvatarsBeanX" />
-        <mapping class="com.hycf.example.hsp.model.MovieDetailModel" />
-        <mapping class="com.hycf.example.hsp.model.MovieDetailModel$RatingBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieDetailModel$ImagesBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieDetailModel$CastsBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieDetailModel$CastsBean$AvatarsBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieDetailModel$DirectorsBean" />
-        <mapping class="com.hycf.example.hsp.model.MovieDetailModel$DirectorsBean$AvatarsBeanX" />
+        <mapping class="com.hycf.example.douban.model.MovieSubjectsModel" />
+        <mapping class="com.hycf.example.douban.model.MovieSubjectsModel$RatingBean" />
+        <mapping class="com.hycf.example.douban.model.MovieSubjectsModel$ImagesBean" />
+        <mapping class="com.hycf.example.douban.model.MovieSubjectsModel$CastsBean" />
+        <mapping class="com.hycf.example.douban.model.MovieSubjectsModel$CastsBean$AvatarsBean" />
+        <mapping class="com.hycf.example.douban.model.MovieSubjectsModel$DirectorsBean" />
+        <mapping class="com.hycf.example.douban.model.MovieSubjectsModel$DirectorsBean$AvatarsBeanX" />
+        <mapping class="com.hycf.example.douban.model.MovieDetailModel" />
+        <mapping class="com.hycf.example.douban.model.MovieDetailModel$RatingBean" />
+        <mapping class="com.hycf.example.douban.model.MovieDetailModel$ImagesBean" />
+        <mapping class="com.hycf.example.douban.model.MovieDetailModel$CastsBean" />
+        <mapping class="com.hycf.example.douban.model.MovieDetailModel$CastsBean$AvatarsBean" />
+        <mapping class="com.hycf.example.douban.model.MovieDetailModel$DirectorsBean" />
+        <mapping class="com.hycf.example.douban.model.MovieDetailModel$DirectorsBean$AvatarsBeanX" />
     </list>
 </litepal>

@@ -98,7 +98,7 @@
                                android:layout_marginBottom="5dp"
                                android:layout_marginLeft="10dp"
                                android:text="@string/works"/>
-                            <com.hycf.example.hsp.assistview.MyRecyclerView
+                            <com.hycf.example.douban.assistview.MyRecyclerView
                                 android:id="@+id/rv_works"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
